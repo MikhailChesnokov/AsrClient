@@ -1,0 +1,46 @@
+﻿@using System.Globalization
+@using Domain.Entities.ResultText
+@model Domain.Entities.ResultText.ResultText
+
+@{
+    ViewData["Title"] = "Гипотеза";
+}
+
+<p></p>
+
+<form>
+    <div class="form-group row">
+        <label for="Id" class="col-sm-3 col-form-label">Id</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Id" value="@Model.Id">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Date" class="col-sm-3 col-form-label">Дата распознавания</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Date" value="@Model.RecognitionDate.ToLongDateString()">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Confidence" class="col-sm-3 col-form-label">Показатель уверенности</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Confidence" value="@(Model.Confidence == 0 ? "Не определен" : Model.Confidence.ToString())">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Status" class="col-sm-3 col-form-label">Статус распознавания</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Status" value="@(Model.RecognitionStatus == RecognitionStatus.Success? "Успешно" : "Ошибка")">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Text" class="col-sm-3 col-form-label">Текст</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Text" value="@Model.Text">
+        </div>
+    </div>
+</form>
+
+<a class="btn btn-primary" href="@(Url.Action("Remove", new{id=Model.Id}))">Удалить</a>
+<a class="btn btn-primary" href="@(Url.Action("View", "Speech", new{id=Model.AudioId}))">Аудиозапись</a>
+<a class="btn btn-primary" href="@(Url.Action("List", new{id=Model.AudioId}))">Прочие результаты</a>

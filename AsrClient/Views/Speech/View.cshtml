@@ -1,0 +1,19 @@
+﻿@using Domain.Entities.Speech
+@model Speech
+
+@{
+    ViewData["Title"] = "Аудиозапись";
+}
+
+<form>
+    <div class="form-group row">
+        <label for="Name" class="col-sm-3 col-form-label">Название</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Name" value="@Model.Name">
+        </div>
+    </div>
+</form>
+
+<a class="btn btn-primary" href="@(Url.Action("Recognize", new{id=Model.Id}))">Распознать</a>
+<a class="btn btn-primary" href="@(Url.Action("List", "ResultText", new{id=Model.Id}))">Просмотреть результаты распознавания</a>
+<a class="btn btn-primary" href="@(Url.Action("Remove", new{id=Model.Id}))">Удалить</a>

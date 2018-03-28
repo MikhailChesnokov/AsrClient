@@ -1,0 +1,35 @@
+﻿@using Domain.Entities.Speaker
+@model IEnumerable<Speaker>
+
+@{
+    ViewData["Title"] = "Спикеры";
+}
+
+<p></p>
+
+@if (Model?.Any() == false)
+{
+    <span>Список спикеров пуст</span>
+}
+else
+{
+    <table class="table table-striped table-bordered" style="width: 500px">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 80px">Id</th>
+                <th scope="col">ФИО</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Speaker speaker in Model)
+            {
+                <tr>
+                    <th scope="row">@speaker.Id</th>
+                    <td>
+                        <a href="@(Url.Action("View", new {id=speaker.Id}))">@($"{speaker.Surname} {speaker.FirstName} {speaker.Patronymic}")</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

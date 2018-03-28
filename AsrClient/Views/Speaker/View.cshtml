@@ -1,0 +1,57 @@
+﻿@model Domain.Entities.Speaker.Speaker
+
+@{
+    ViewData["Title"] = "Спикер";
+}
+
+<p></p>
+
+<form>
+    <div class="form-group row">
+        <label for="FirstName" class="col-sm-3 col-form-label">Имя</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="FirstName" value="@Model.FirstName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Surname" class="col-sm-3 col-form-label">Фамилия</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Surname" value="@Model.Surname">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Patronymic" class="col-sm-3 col-form-label">Отчество</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Patronymic" value="@Model.Patronymic">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="University" class="col-sm-3 col-form-label">Университет</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="University" value="@Model.University">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Faculty" class="col-sm-3 col-form-label">Факультет</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Faculty" value="@Model.Faculty">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Group" class="col-sm-3 col-form-label">Группа</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Group" value="@Model.Group">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Course" class="col-sm-3 col-form-label">Курс</label>
+        <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="Course" value="@Model.Course">
+        </div>
+    </div>
+</form>
+
+<a class="btn btn-primary" href="@(Url.Action("Edit", new{id=Model.Id}))">Редактировать</a>
+<a class="btn btn-primary" href="@(Url.Action("Remove", new{id=Model.Id}))">Удалить</a>
+<a class="btn btn-primary" href="@(Url.Action("List", "Speech", new{id=Model.Id}))">Аудиозаписи</a>
+<a class="btn btn-primary" href="@(Url.Action("Upload", "Speech", new{id=Model.Id}))">Загрузить аудио</a>

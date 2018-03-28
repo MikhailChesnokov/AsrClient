@@ -1,0 +1,23 @@
+﻿@model Web.Controllers.Speech.Form.UploadForm
+
+@{
+    ViewData["Title"] = "Загрузка аудиозаписи";
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="Speech" asp-action="Upload">
+
+    <input type="hidden" name="Id" value="@Model.Id">
+
+    <p></p>
+
+    <div class="custom-file">
+        <div class="col-md-3">
+            <label class="custom-file-label" for="customFile">Файл</label>
+            <input type="file" class="custom-file-input" name="File" id="customFile" />
+        </div>
+    </div>
+
+    <p></p>
+
+    <input type="submit" value="Загрузить" class="btn btn-light" />
+</form>

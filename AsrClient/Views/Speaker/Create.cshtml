@@ -1,0 +1,138 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model Web.Controllers.Speaker.Forms.CreateSpeakerForm
+
+<form method="post">
+
+    @if (ViewContext.ModelState.Root?.Errors?.Count > 0)
+    {
+        foreach (ModelError modelError in ViewContext.ModelState.Root.Errors)
+        {
+            <div class="alert alert-danger" role="alert">
+                @modelError.ErrorMessage
+            </div>
+        }
+    }
+
+    <p></p>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputFirstName">Имя</label>
+        <input type="text" class="form-control col-sm-4" id="inputFirstName" name="FirstName" placeholder="Введите имя..."
+               value="@(ViewContext.ModelState["FirstName"]?.AttemptedValue ?? Model.FirstName)">
+        @if (ViewContext.ModelState["FirstName"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputFirstName").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректное имя
+            </div>
+        }
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputSurname">Фамилия</label>
+        <input type="text" class="form-control col-sm-4" id="inputSurname" name="Surname" placeholder="Введите фамилию..."
+               value="@(ViewContext.ModelState["Surname"]?.AttemptedValue ?? Model.Surname)">
+        @if (ViewContext.ModelState["Surname"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputSurname").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректная фамилия
+            </div>
+        }
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputPatronymic">Отчество</label>
+        <input type="text" class="form-control col-sm-4" id="inputPatronymic" name="Patronymic" placeholder="Введите отчество..."
+               value="@(ViewContext.ModelState["Patronymic"]?.AttemptedValue ?? Model.Patronymic)">
+        @if (ViewContext.ModelState["Patronymic"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputPatronymic").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректное отчество
+            </div>
+        }
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputUniversity">Университет</label>
+        <input type="text" class="form-control col-sm-4" id="inputUniversity" name="University" placeholder="Введите название университета..."
+               value="@(ViewContext.ModelState["University"]?.AttemptedValue ?? Model.University)">
+        @if (ViewContext.ModelState["University"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputUniversity").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректное название университета
+            </div>
+        }
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputFaculty">Факультет</label>
+        <input type="text" class="form-control col-sm-4" id="inputFaculty" name="Faculty" placeholder="Введите название факультета..."
+               value="@(ViewContext.ModelState["Faculty"]?.AttemptedValue ?? Model.Faculty)">
+        @if (ViewContext.ModelState["Faculty"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputFaculty").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректное название факультета
+            </div>
+        }
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputGroup">Группа</label>
+        <input type="text" class="form-control col-sm-4" id="inputGroup" name="Group" placeholder="Введите название группы..."
+               value="@(ViewContext.ModelState["Group"]?.AttemptedValue ?? Model.Group)">
+        @if (ViewContext.ModelState["Group"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputGroup").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректное название группы
+            </div>
+        }
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="inputCourse">Курс</label>
+        <input type="text" class="form-control col-sm-4" id="inputCourse" name="Course" placeholder="Введите курс..."
+               value="@(ViewContext.ModelState["Course"]?.AttemptedValue ?? Model.Course.ToString())">
+        @if (ViewContext.ModelState["Course"]?.Errors?.Count > 0)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#inputCourse").addClass("is-invalid");
+                });
+            </script>
+            <div class="invalid-feedback col-sm-4">
+                Некорректный курс
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
